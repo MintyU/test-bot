@@ -9,7 +9,7 @@ https://discordapp.com/api/oauth2/authorize?client_id=692332292588306475&permiss
 
 - ping pong
 
-If you type 'ping', Bot will reply with 'Pong!'
+  - If you type 'ping', Bot will reply with 'Pong!'
 
 
 
