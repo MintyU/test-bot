@@ -5,7 +5,7 @@ Click the link below if you want to add the bot
 
 https://discordapp.com/api/oauth2/authorize?client_id=692332292588306475&permissions=10240&scope=bot
 
-## function
+## Function
 
 - ping pong
 
