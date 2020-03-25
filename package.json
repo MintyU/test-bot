@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/MintyU/test-bot/issues"
   },
-  "homepage": "https://github.com/MintyU/test-bot#readme"
+  "homepage": "https://github.com/MintyU/test-bot#readme",
+  "dependencies": {
+    "discord.js": "^12.0.2"
+  }
 }
