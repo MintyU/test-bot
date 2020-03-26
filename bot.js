@@ -12,7 +12,7 @@ client.on('message', msg => {
   if (msg.content === `${prefix}ping`) {
     msg.reply('Pong!');
   } else if (msg.content === `${prefix}server`) {
-    msg.reply(`This server's name is: ${msg.guild.name}`)
+    msg.reply(`This server's name is: ${msg.guild.name}\nTotal members: ${msg.guild.memberCount}`)
   }
 });
 
