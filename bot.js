@@ -10,7 +10,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
   if (!msg.content.startsWith(prefix)||msg.author.bot) return;
-  const args = message.content.slice(prefix.length).split(' ');
+  const args = msg.content.slice(prefix.length).split(' ');
   const command = args.shift().toLowerCase();
 
   if (command === `ping`) {
