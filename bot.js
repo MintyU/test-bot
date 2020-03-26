@@ -9,11 +9,15 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {
-  if (msg.content === `${prefix}ping`) {
+  if (!msg.content.startsWith(prefix)||msg.author.bot) return;
+  const args = message.content.slice(prefix.length).split(' ');
+  const command = args.shift().toLowerCase();
+
+  if (command === `ping`) {
     msg.reply('Pong!');
-  } else if (msg.content === `${prefix}server`) {
+  } else if (command === `server`) {
     msg.reply(`This server's name is: ${msg.guild.name}\nTotal members: ${msg.guild.memberCount}`)
-  }
+  } 
 });
 
 client.login(token);
