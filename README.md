@@ -7,6 +7,8 @@ https://discordapp.com/api/oauth2/authorize?client_id=692332292588306475&permiss
 
 ## Function
 
+### <Commands>
+
 - ping pong
 
   - If you type 'ping', Bot will reply with 'Pong!'
