@@ -7,6 +7,12 @@ https://discordapp.com/api/oauth2/authorize?client_id=692332292588306475&permiss
 
 ## Function
 
+### <Passives>
+
+- Member Greeting
+
+  - If new member comes to server, The bot will welcome new member.
+
 ### <Commands>
 
 - !ping
