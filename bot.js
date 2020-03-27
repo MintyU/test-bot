@@ -7,11 +7,13 @@ const prefix = process.env.prefix;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const commandFiles = fs
+  .readdirSync("./commands")
+  .filter(file => file.endsWith(".js"));
 
 for (const file of commandFiles) {
-	const command = require(`./commands/${file}`);
-	client.commands.set(command.name, command);
+  const command = require(`./commands/${file}`);
+  client.commands.set(command.name, command);
 }
 
 client.on("ready", () => {
@@ -24,11 +26,9 @@ client.on("message", msg => {
   const command = args.shift().toLowerCase();
 
   if (command === `ping`) {
-    client.commands.get('ping').execute(msg, args)
+    client.commands.get("ping").execute(msg, args);
   } else if (command === `server`) {
-    msg.reply(
-      `This server's name is: ${msg.guild.name}\nTotal members: ${msg.guild.memberCount}`
-    );
+    client.commands.get("server").execute(msg, args);
   } else if (command === `avatar`) {
     if (!msg.mentions.users.size) {
       return msg.channel.send(
