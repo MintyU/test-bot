@@ -1,7 +1,7 @@
 module.exports = {
   name: "avatar",
   aliases: ['icon', 'pfp'],
-  description: "",
+  description: "show user avatar link",
   execute(msg, args) {
     if (!msg.mentions.users.size) {
       return msg.channel.send(
