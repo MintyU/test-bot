@@ -9,27 +9,30 @@ const client = new Discord.Client();
 client.commands = new Discord.Collection();
 const commandFiles = fs
   .readdirSync("./commands")
-  .filter(file => file.endsWith(".js"));
+  .filter((file) => file.endsWith(".js"));
 
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`);
   client.commands.set(command.name, command);
 }
 
+let members = [];
+let person = {};
+
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", (member) => {
   const channel = member.guild.channels.cache.find(
-    ch => ch.name === "member-log"
+    (ch) => ch.name === "member-log"
   );
   if (!channel) return;
 
   channel.send(`Welcome to the server, ${member}!`);
 });
 
-client.on("message", msg => {
+client.on("message", (msg) => {
   if (!msg.content.startsWith(prefix) || msg.author.bot) return;
   const args = msg.content.slice(prefix.length).split(" ");
   const commandName = args.shift().toLowerCase();
@@ -37,7 +40,7 @@ client.on("message", msg => {
   const command =
     client.commands.get(commandName) ||
     client.commands.find(
-      cmd => cmd.aliases && cmd.aliases.includes(commandName)
+      (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
     );
   if (!command) return;
 
