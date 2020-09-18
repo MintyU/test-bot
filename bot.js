@@ -1,9 +1,14 @@
 const fs = require("fs");
 const Discord = require("discord.js");
+const mysql = require("mysql");
 
 require("dotenv").config();
 const token = process.env.token;
 const prefix = process.env.prefix;
+const sqlHost = process.env.host;
+const sqlUser = process.env.user;
+const sqlPassword = process.env.password;
+const sqlDatabase = process.env.database;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
@@ -16,9 +21,6 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-let members = [];
-let person = {};
-
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -30,6 +32,25 @@ client.on("guildMemberAdd", (member) => {
   if (!channel) return;
 
   channel.send(`Welcome to the server, ${member}!`);
+});
+
+function generateXp() {
+  let min = 20;
+  let max = 30;
+
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+var con = mysql.createConnection({
+  host: sqlHost,
+  user: sqlUser,
+  password: sqlPassword,
+  database: sqlDatabase,
+});
+
+con.connect((err) => {
+  if (err) throw err;
+  console.log("Connected to database");
 });
 
 client.on("message", (msg) => {
